@@ -4,7 +4,8 @@ Imports LoginLibrary.SupportClasses
 
 Namespace DataClasses
     ''' <summary>
-    ''' Responsible to validating a user has permissions to access the database, not tables.
+    ''' Responsible to validating a user has permissions 
+    ''' to access the database, not tables.
     ''' </summary>
     Public Class DatabaseUser
         Private serverName As String
@@ -22,7 +23,10 @@ Namespace DataClasses
 
 
             Dim ConnectionString As String =
-                    $"Data Source={serverName};Initial Catalog={catalogName};User Id={userName};Password={userPassword};Integrated Security=False"
+                    $"Data Source={serverName};" &
+                    $"Initial Catalog={catalogName};" &
+                    $"User Id={userName};Password={userPassword};" &
+                    "Integrated Security=False"
 
             Using cn As New SqlConnection With {.ConnectionString = ConnectionString}
                 Try

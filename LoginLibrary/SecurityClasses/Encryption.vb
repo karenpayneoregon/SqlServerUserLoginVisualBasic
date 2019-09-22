@@ -11,7 +11,9 @@ Namespace SecurityClasses
             Dim encryptedPassword As Byte()
             Using outputStream = New MemoryStream()
                 Dim algorithm As RijndaelManaged = getAlgorithm(secretKey)
-                Using cryptoStream = New CryptoStream(outputStream, algorithm.CreateEncryptor(), CryptoStreamMode.Write)
+                Using cryptoStream =
+                    New CryptoStream(outputStream, algorithm.CreateEncryptor(),
+                                     CryptoStreamMode.Write)
                     Dim inputBuffer() As Byte = Encoding.Unicode.GetBytes(plainText)
                     cryptoStream.Write(inputBuffer, 0, inputBuffer.Length)
                     cryptoStream.FlushFinalBlock()
@@ -25,9 +27,12 @@ Namespace SecurityClasses
             Dim plainText As String = Nothing
             Using inputStream = New MemoryStream(encryptedBytes)
                 Dim algorithm As RijndaelManaged = getAlgorithm(secretKey)
-                Using cryptoStream = New CryptoStream(inputStream, algorithm.CreateDecryptor(), CryptoStreamMode.Read)
+                Using cryptoStream =
+                    New CryptoStream(inputStream, algorithm.CreateDecryptor(),
+                                     CryptoStreamMode.Read)
                     Dim outputBuffer(0 To CType(inputStream.Length - 1, Integer)) As Byte
-                    Dim readBytes As Integer = cryptoStream.Read(outputBuffer, 0, CType(inputStream.Length, Integer))
+                    Dim readBytes As Integer =
+                            cryptoStream.Read(outputBuffer, 0, CType(inputStream.Length, Integer))
                     plainText = Encoding.Unicode.GetString(outputBuffer, 0, readBytes)
                 End Using
             End Using

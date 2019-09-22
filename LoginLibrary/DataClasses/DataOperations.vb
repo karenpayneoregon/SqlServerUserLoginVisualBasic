@@ -9,7 +9,12 @@ Namespace DataClasses
 
         Private ConnectionString As String
         '
-        Public Sub New(pNameBytes As Byte(), pPasswordBytes As Byte(), pServerName As String, pCatalogName As String)
+        Public Sub New(
+            pNameBytes As Byte(),
+            pPasswordBytes As Byte(),
+            pServerName As String,
+            pCatalogName As String)
+
             Dim secureOperations = New Encryption
 
             ConnectionString = $"Data Source={pServerName};Initial Catalog={pCatalogName};" &
@@ -61,7 +66,11 @@ Namespace DataClasses
                         cn.Open()
                         productDataTable.Load(cmd.ExecuteReader())
 
-                        Dim identifiers = productDataTable.Columns.Cast(Of DataColumn).Where(Function(column) column.ColumnName.EndsWith("ID")).Select(Function(item) item.ColumnName).ToList()
+                        Dim identifiers = productDataTable.
+                                Columns.Cast(Of DataColumn).
+                                Where(Function(column) column.ColumnName.EndsWith("ID")).
+                                Select(Function(item) item.ColumnName).ToList()
+
                         For Each columnName As String In identifiers
                             productDataTable.Columns(columnName).ColumnMapping = MappingType.Hidden
                         Next
