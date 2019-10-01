@@ -27,7 +27,7 @@ Namespace DataClasses
             Dim userName = secureOperations.Decrypt(pNameBytes, "111")
             Dim userPassword = secureOperations.Decrypt(pPasswordBytes, "111")
 
-            Dim ConnectionString As String =
+            Dim connectionString As String =
                     $"Data Source={serverName};" &
                     $"Initial Catalog={catalogName};"
 
@@ -42,7 +42,7 @@ Namespace DataClasses
 
             Dim credentials = New SqlCredential(userName, securePassword)
 
-            Using cn = New SqlConnection With {.ConnectionString = ConnectionString}
+            Using cn = New SqlConnection With {.ConnectionString = connectionString}
                 Try
                     cn.Credential = credentials
                     cn.Open()
@@ -73,13 +73,13 @@ Namespace DataClasses
             Dim userName = secureOperations.Decrypt(pNameBytes, "111")
             Dim userPassword = secureOperations.Decrypt(pPasswordBytes, "111")
 
-            Dim ConnectionString As String =
+            Dim connectionString As String =
                     $"Data Source={serverName};" &
                     $"Initial Catalog={catalogName};" &
                     $"User Id={userName};Password={userPassword};" &
                     "Integrated Security=False"
 
-            Using cn As New SqlConnection With {.ConnectionString = ConnectionString}
+            Using cn As New SqlConnection With {.ConnectionString = connectionString}
                 Try
                     cn.Open()
                     loginResult.Success = True
