@@ -13,7 +13,10 @@
         End If
         If Not String.IsNullOrWhiteSpace(UserNameTextBox.Text) AndAlso Not String.IsNullOrWhiteSpace(PasswordTextBox.Text) Then
             If UserNameTextBox.Text = userID AndAlso PasswordTextBox.Text = password Then
-                MessageBox.Show("Welcome")
+                My.Application.UserName = UserNameTextBox.Text
+                Dim f As New MainForm
+                Me.Hide()
+                f.ShowDialog()
             Else
                 Controls.OfType(Of TextBox).ToList().ForEach(Sub(tb) tb.Text = "")
                 MessageBox.Show("Invalid logn")
