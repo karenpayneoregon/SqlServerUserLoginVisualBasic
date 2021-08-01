@@ -17,7 +17,7 @@ Public Class MainForm
     End Sub
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim ops As New DataOperations(userNameBytes, userPasswordBytes, "KARENS-PC", "UserLoginExample")
+        Dim ops As New DataOperations(userNameBytes, userPasswordBytes, ".\SQLEXPRESS", "UserLoginExample")
 
         Dim productTable = ops.ReadProductsByCategory(1)
         If ops.IsSuccessFul Then

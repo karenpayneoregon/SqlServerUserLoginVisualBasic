@@ -23,7 +23,7 @@ Public Class LoginForm
 
         If Not String.IsNullOrWhiteSpace(UserNameTextBox.Text) AndAlso Not String.IsNullOrWhiteSpace(PasswordTextBox.Text) Then
 
-            Dim ops = New DatabaseUser("KARENS-PC", "UserLoginExample")
+            Dim ops = New DatabaseUser(".\SQLEXPRESS", "UserLoginExample")
             Dim tester = New Encryption
 
             ' encrypt user name and password

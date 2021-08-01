@@ -7,3 +7,7 @@ Usually opening a Microsoft SQL-Server database involves no security for small p
 [Microsoft TechNet article](https://social.technet.microsoft.com/wiki/contents/articles/53314.sql-server-database-login-for-windows-forms-vb-net.aspx)
 
 [C# repository](https://github.com/karenpayneoregon/SqlServerUserLoginSharp).
+
+# Update
+
+7/31/2021 - changed server name
